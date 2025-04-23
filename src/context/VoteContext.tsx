@@ -1,8 +1,6 @@
-
 import React, { createContext, useContext, useState, useEffect } from "react";
 import { Magazine } from "@/types";
 
-// 1. Set up initial magazine data for just 4 magazines, using local placeholders.
 const initialMagazines: Magazine[] = [
   {
     id: "11a",
@@ -56,7 +54,6 @@ interface VoteContextProps {
 const VoteContext = createContext<VoteContextProps | undefined>(undefined);
 
 export const VoteProvider: React.FC<{ children: React.ReactNode }> = ({ children }) => {
-  // Use only the 4 magazines
   const [magazines, setMagazines] = useState<Magazine[]>(() => {
     const savedMagazines = localStorage.getItem("mathMagazines");
     return savedMagazines ? JSON.parse(savedMagazines) : initialMagazines;

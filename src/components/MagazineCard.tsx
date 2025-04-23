@@ -1,4 +1,3 @@
-
 import { useState } from "react";
 import { Magazine } from "@/types";
 import { Card, CardContent, CardFooter } from "@/components/ui/card";
@@ -85,11 +84,10 @@ export function MagazineCard({ magazine, totalVotes }: MagazineCardProps) {
             />
           </div>
         )}
-        {/* 1. Make the button smaller using padding, height and text size */}
         <Button 
           onClick={handleVote}
           disabled={hasVoted}
-          className={`vote-button w-full px-2 py-1 text-xs h-8 font-semibold ${
+          className={`vote-button w-full px-1 py-1 text-xs h-7 font-semibold ${
             isVotedFor 
               ? "bg-primary/80 hover:bg-primary/90" 
               : hasVoted 
@@ -102,7 +100,7 @@ export function MagazineCard({ magazine, totalVotes }: MagazineCardProps) {
             ? "Thank you!" 
             : hasVoted 
               ? "Already Voted" 
-              : "Vote for this Magazine"}
+              : "Vote"}
         </Button>
       </CardFooter>
     </Card>
