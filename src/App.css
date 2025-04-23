@@ -1,3 +1,6 @@
+@import url('https://fonts.googleapis.com/css2?family=Cairo:wght@200..1000&family=Winky+Rough:ital,wght@0,300..900;1,300..900&display=swap');
+
+
 #root {
   max-width: 1280px;
   margin: 0 auto;
@@ -39,4 +42,15 @@
 
 .read-the-docs {
   color: #888;
+}
+
+body {
+  font-family: "Cairo", sans-serif !important;
+  background-image: url('/images/mathbg.png');
+  background-size: cover;
+  background-position: center;
+  background-attachment: fixed;
+  background-color: rgba(0, 0, 0, 0.65);
+  background-blend-mode: multiply;
+  
 }
