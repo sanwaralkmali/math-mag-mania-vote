@@ -1,4 +1,3 @@
-
 import { useState } from "react";
 import { Magazine } from "@/types";
 import { Card, CardContent, CardFooter } from "@/components/ui/card";
@@ -81,21 +80,20 @@ export function MagazineCard({ magazine, totalVotes }: MagazineCardProps) {
             <img 
               src={magazine.qrCodeImage} 
               alt={`QR Code for ${magazine.title}`} 
-              className="h-16 w-16 object-contain"  // smaller size
+              className="h-20 w-20 object-contain"
             />
           </div>
         )}
         <Button 
           onClick={handleVote}
           disabled={hasVoted}
-          className={`vote-button w-full px-1 py-1 text-xs h-6 min-h-0 font-semibold ${
+          className={`vote-button w-full px-1 py-1 text-xs h-7 font-semibold ${
             isVotedFor 
               ? "bg-primary/80 hover:bg-primary/90" 
               : hasVoted 
                 ? "bg-muted hover:bg-muted" 
                 : "bg-game-orange hover:bg-game-orange/90"
           }`}
-          style={{ fontSize: "0.89rem", padding: "0.25rem 0.5rem", height: "1.85rem", minHeight: "unset", borderRadius: "0.45rem" }}
         >
           <Vote className="mr-1 h-3 w-3" />
           {isVotedFor 
