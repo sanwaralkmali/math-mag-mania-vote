@@ -2,6 +2,46 @@
 import React, { createContext, useContext, useState, useEffect } from "react";
 import { Magazine } from "@/types";
 
+// 1. Set up initial magazine data for just 4 magazines, using local placeholders.
+const initialMagazines: Magazine[] = [
+  {
+    id: "11a",
+    title: "Grade 11A – Math Magazine",
+    grade: "11A",
+    coverImage: "/images/magazines/G11A_CP.png",
+    flipHtml5Url: "https://online.fliphtml5.com/example/11a/",
+    qrCodeImage: "/images/qr_codes/G11A_QR.png",
+    votes: 0
+  },
+  {
+    id: "11b",
+    title: "Grade 11B – Math Magazine",
+    grade: "11B",
+    coverImage: "/images/magazines/G11B_CP.png",
+    flipHtml5Url: "https://online.fliphtml5.com/example/11b/",
+    qrCodeImage: "/images/qr_codes/G11B_QR.png",
+    votes: 0
+  },
+  {
+    id: "12a",
+    title: "Grade 12A – Math Magazine",
+    grade: "12A",
+    coverImage: "/images/magazines/G12A_CP.png",
+    flipHtml5Url: "https://online.fliphtml5.com/example/12a/",
+    qrCodeImage: "/images/qr_codes/G12A_QR.png",
+    votes: 0
+  },
+  {
+    id: "12b",
+    title: "Grade 12B – Math Magazine",
+    grade: "12B",
+    coverImage: "/images/magazines/G12B_CP.png",
+    flipHtml5Url: "https://online.fliphtml5.com/example/12b/",
+    qrCodeImage: "/images/qr_codes/G12B_QR.png",
+    votes: 0
+  }
+];
+
 interface VoteContextProps {
   magazines: Magazine[];
   updateVotes: (magazineId: string) => void;
@@ -16,7 +56,7 @@ interface VoteContextProps {
 const VoteContext = createContext<VoteContextProps | undefined>(undefined);
 
 export const VoteProvider: React.FC<{ children: React.ReactNode }> = ({ children }) => {
-  // Try to load magazines from localStorage or use initial data
+  // Use only the 4 magazines
   const [magazines, setMagazines] = useState<Magazine[]>(() => {
     const savedMagazines = localStorage.getItem("mathMagazines");
     return savedMagazines ? JSON.parse(savedMagazines) : initialMagazines;
@@ -25,19 +65,15 @@ export const VoteProvider: React.FC<{ children: React.ReactNode }> = ({ children
   const [hasVoted, setHasVoted] = useState<boolean>(() => {
     return localStorage.getItem("hasVoted") === "true";
   });
-  
   const [votedMagazineId, setVotedMagazineId] = useState<string | null>(() => {
     return localStorage.getItem("votedMagazineId");
   });
-  
   const [thankYouVisible, setThankYouVisible] = useState<boolean>(false);
 
-  // Save magazines to localStorage whenever they change
   useEffect(() => {
     localStorage.setItem("mathMagazines", JSON.stringify(magazines));
   }, [magazines]);
 
-  // Save voting status to localStorage
   useEffect(() => {
     localStorage.setItem("hasVoted", hasVoted.toString());
     if (votedMagazineId) {
@@ -58,11 +94,7 @@ export const VoteProvider: React.FC<{ children: React.ReactNode }> = ({ children
     setHasVoted(true);
     setVotedMagazineId(magazineId);
     setThankYouVisible(true);
-    
-    // Hide thank you message after 3 seconds
-    setTimeout(() => {
-      setThankYouVisible(false);
-    }, 3000);
+    setTimeout(() => setThankYouVisible(false), 3000);
   };
 
   return (
@@ -88,79 +120,3 @@ export const useVoteContext = (): VoteContextProps => {
   }
   return context;
 };
-
-// Example magazine data - replace with your actual magazines
-const initialMagazines: Magazine[] = [
-  {
-    id: "11a-1",
-    title: "Algebra Adventures",
-    grade: "11A",
-    coverImage: "https://images.unsplash.com/photo-1605810230434-7631ac76ec81?auto=format&fit=crop&w=500&h=700",
-    flipHtml5Url: "https://online.fliphtml5.com/example/11a-1/",
-    qrCodeImage: "https://api.qrserver.com/v1/create-qr-code/?size=150x150&data=https://online.fliphtml5.com/example/11a-1/",
-    votes: 0
-  },
-  {
-    id: "11a-2",
-    title: "Math Masters",
-    grade: "11A",
-    coverImage: "https://images.unsplash.com/photo-1487058792275-0ad4aaf24ca7?auto=format&fit=crop&w=500&h=700",
-    flipHtml5Url: "https://online.fliphtml5.com/example/11a-2/",
-    qrCodeImage: "https://api.qrserver.com/v1/create-qr-code/?size=150x150&data=https://online.fliphtml5.com/example/11a-2/",
-    votes: 0
-  },
-  {
-    id: "11b-1",
-    title: "Geometry Gems",
-    grade: "11B",
-    coverImage: "https://images.unsplash.com/photo-1488590528505-98d2b5aba04b?auto=format&fit=crop&w=500&h=700",
-    flipHtml5Url: "https://online.fliphtml5.com/example/11b-1/",
-    qrCodeImage: "https://api.qrserver.com/v1/create-qr-code/?size=150x150&data=https://online.fliphtml5.com/example/11b-1/",
-    votes: 0
-  },
-  {
-    id: "11b-2",
-    title: "Number Theory News",
-    grade: "11B",
-    coverImage: "https://images.unsplash.com/photo-1461749280684-dccba630e2f6?auto=format&fit=crop&w=500&h=700",
-    flipHtml5Url: "https://online.fliphtml5.com/example/11b-2/",
-    qrCodeImage: "https://api.qrserver.com/v1/create-qr-code/?size=150x150&data=https://online.fliphtml5.com/example/11b-2/",
-    votes: 0
-  },
-  {
-    id: "12a-1",
-    title: "Calculus Chronicles",
-    grade: "12A",
-    coverImage: "https://images.unsplash.com/photo-1486312338219-ce68d2c6f44d?auto=format&fit=crop&w=500&h=700",
-    flipHtml5Url: "https://online.fliphtml5.com/example/12a-1/",
-    qrCodeImage: "https://api.qrserver.com/v1/create-qr-code/?size=150x150&data=https://online.fliphtml5.com/example/12a-1/",
-    votes: 0
-  },
-  {
-    id: "12a-2",
-    title: "Statistics Spotlight",
-    grade: "12A",
-    coverImage: "https://images.unsplash.com/photo-1581091226825-a6a2a5aee158?auto=format&fit=crop&w=500&h=700",
-    flipHtml5Url: "https://online.fliphtml5.com/example/12a-2/",
-    qrCodeImage: "https://api.qrserver.com/v1/create-qr-code/?size=150x150&data=https://online.fliphtml5.com/example/12a-2/",
-    votes: 0
-  },
-  {
-    id: "12b-1",
-    title: "Probability Pioneers",
-    grade: "12B",
-    coverImage: "https://images.unsplash.com/photo-1498050108023-c5249f4df085?auto=format&fit=crop&w=500&h=700",
-    flipHtml5Url: "https://online.fliphtml5.com/example/12b-1/",
-    qrCodeImage: "https://api.qrserver.com/v1/create-qr-code/?size=150x150&data=https://online.fliphtml5.com/example/12b-1/",
-    votes: 0
-  },
-  {
-    id: "12b-2",
-    title: "Mathematical Marvels",
-    grade: "12B",
-    coverImage: "https://images.unsplash.com/photo-1483058712412-4245e9b90334?auto=format&fit=crop&w=500&h=700",
-    flipHtml5Url: "https://online.fliphtml5.com/example/12b-2/",
-    qrCodeImage: "https://api.qrserver.com/v1/create-qr-code/?size=150x150&data=https://online.fliphtml5.com/example/12b-2/",
-    votes: 0
-  }
-];

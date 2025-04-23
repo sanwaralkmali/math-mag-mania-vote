@@ -3,9 +3,9 @@ export interface Magazine {
   id: string;
   title: string;
   grade: string;
-  coverImage: string;
+  coverImage: string; // local or remote path, uses "/images/magazines/..." for local upload
   flipHtml5Url: string;
-  qrCodeImage?: string;
+  qrCodeImage?: string; // "/images/qr_codes/..." for local upload
   votes: number;
 }
 

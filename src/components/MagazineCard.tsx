@@ -16,21 +16,15 @@ interface MagazineCardProps {
 export function MagazineCard({ magazine, totalVotes }: MagazineCardProps) {
   const [isHovered, setIsHovered] = useState(false);
   const { updateVotes, hasVoted, votedMagazineId } = useVoteContext();
-  
   const handleVote = () => {
-    if (!hasVoted) {
-      updateVotes(magazine.id);
-    }
+    if (!hasVoted) updateVotes(magazine.id);
   };
-  
   const openMagazine = () => {
     window.open(magazine.flipHtml5Url, "_blank", "noopener,noreferrer");
   };
-  
   const votePercentage = totalVotes > 0 
     ? Math.round((magazine.votes / totalVotes) * 100) 
     : 0;
-  
   const isVotedFor = votedMagazineId === magazine.id;
 
   return (
@@ -68,7 +62,6 @@ export function MagazineCard({ magazine, totalVotes }: MagazineCardProps) {
           {magazine.grade}
         </Badge>
       </div>
-      
       <CardContent className="pt-4 flex-grow">
         <h3 className="text-lg font-bold mb-2">{magazine.title}</h3>
         <div className="mt-4">
@@ -82,22 +75,21 @@ export function MagazineCard({ magazine, totalVotes }: MagazineCardProps) {
           </div>
         </div>
       </CardContent>
-      
-      <CardFooter className="pt-0">
+      <CardFooter className="pt-0 flex flex-col">
         {magazine.qrCodeImage && (
           <div className="mb-2 w-full flex justify-center">
             <img 
               src={magazine.qrCodeImage} 
               alt={`QR Code for ${magazine.title}`} 
-              className="h-24 w-24 object-contain"
+              className="h-20 w-20 object-contain"
             />
           </div>
         )}
-        
+        {/* 1. Make the button smaller using padding, height and text size */}
         <Button 
           onClick={handleVote}
           disabled={hasVoted}
-          className={`vote-button w-full ${
+          className={`vote-button w-full px-2 py-1 text-xs h-8 font-semibold ${
             isVotedFor 
               ? "bg-primary/80 hover:bg-primary/90" 
               : hasVoted 
@@ -105,7 +97,7 @@ export function MagazineCard({ magazine, totalVotes }: MagazineCardProps) {
                 : "bg-game-orange hover:bg-game-orange/90"
           }`}
         >
-          <Vote className="mr-2 h-4 w-4" />
+          <Vote className="mr-1 h-3 w-3" />
           {isVotedFor 
             ? "Thank you!" 
             : hasVoted 
