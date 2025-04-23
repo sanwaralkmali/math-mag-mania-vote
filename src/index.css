@@ -97,6 +97,18 @@
 
   body {
     @apply bg-background text-foreground;
+    background-image: url('/images/mathbg.png');
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    background-position: center;
+    /* fallback color if image missing */
+    background-color: #222436;
+    min-height: 100vh;
+    position: relative;
+    overflow-x: hidden;
+    /* Optional: for darker overlay if needed */
+    /* background-blend-mode: multiply; */
   }
 }
 
@@ -171,4 +183,36 @@
   width: 10px;
   height: 10px;
   border-radius: 50%;
+}
+
+.math-symbol-bg {
+  position: fixed;
+  z-index: 1;
+  pointer-events: none;
+  font-size: 3rem;
+  font-weight: bold;
+  opacity: 0.18;
+  color: #fff;
+  user-select: none;
+  text-shadow: 0 4px 24px #6e59a5, 2px 0 4px #1A1F2C;
+  animation: bg-float 4.2s ease-in-out infinite alternate;
+}
+@keyframes bg-float {
+  0% { transform: translateY(0) rotate(-6deg);}
+  100% { transform: translateY(-24px) rotate(6deg);}
+}
+/* Slightly different speeds and directions for some */
+.math-symbol-bg2 { animation-duration: 6.5s; left:10vw; top:40vh;}
+.math-symbol-bg3 { animation-duration: 5.4s; right:11vw; top:16vh;}
+.math-symbol-bg4 { animation-duration: 7.1s; left:48vw; top:64vh;}
+.math-symbol-bg5 { animation-duration: 6.8s; right:33vw; top:68vh;}
+.math-symbol-bg6 { animation-duration: 8.2s; left:62vw; top:24vh;}
+.math-symbol-bg7 { animation-duration: 6.3s; right:4vw; top:75vh; color:#ffd60a;}
+.math-symbol-bg8 { animation-duration: 5.2s; left:8vw; top:80vh; color:#72e1d1;}
+.math-symbol-bg9 { animation-duration: 7.7s; left:30vw; top:15vh; color:#9b87f5;}
+.math-symbol-bg10 { animation-duration: 8.1s; right:5vw; top:8vh; color:#F97316;}
+
+#root {
+  position: relative;
+  z-index: 2;
 }
