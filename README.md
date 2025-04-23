@@ -1,73 +1,44 @@
-# Welcome to your Lovable project
 
-## Project info
+# Math Magazine Mania - Voting Application
 
-**URL**: https://lovable.dev/projects/10ecdc00-7447-41ac-b556-024a000b47f8
+A modern, interactive, game-inspired voting website for the Math and Science Fair, where visitors can view and vote for their favorite math magazines created by students.
 
-## How can I edit this code?
+## Features
 
-There are several ways of editing your application.
+- **Modern, Game-Inspired Design**: Playful colors, animations, and interactive elements
+- **Responsive Layout**: Works seamlessly on mobile and desktop devices
+- **Magazine Grid Display**: Shows magazine covers organized by grade (11A, 11B, 12A, 12B)
+- **Voting System**: Easy one-click voting with visual feedback
+- **Vote Tracking**: Progress bars show current vote standings
+- **Thank You Message**: Animated confirmation with confetti effect after voting
+- **QR Code Support**: Displays QR codes for each magazine for easy scanning
+- **External Links**: Magazine covers link to FlipHTML5 URLs
 
-**Use Lovable**
+## Technical Implementation
 
-Simply visit the [Lovable Project](https://lovable.dev/projects/10ecdc00-7447-41ac-b556-024a000b47f8) and start prompting.
+- React with TypeScript
+- Tailwind CSS for styling
+- Local storage for vote persistence
+- Responsive grid layout
+- Interactive animations and transitions
+- Grade-based filtering
 
-Changes made via Lovable will be committed automatically to this repo.
+## How to Use
 
-**Use your preferred IDE**
+1. Browse the magazines by grade using the tabs at the top
+2. Click on a magazine cover to view the full magazine on FlipHTML5
+3. Vote for your favorite magazine using the "Vote" button
+4. Scan the QR code to view the magazine on a mobile device
+5. Use the "Reset Vote" button if you need to change your vote
 
-If you want to work locally using your own IDE, you can clone this repo and push changes. Pushed changes will also be reflected in Lovable.
+## Setup Instructions
 
-The only requirement is having Node.js & npm installed - [install with nvm](https://github.com/nvm-sh/nvm#installing-and-updating)
+To use this with your actual magazine content:
 
-Follow these steps:
+1. Replace the placeholder magazine cover images with your students' actual magazine covers
+2. Update the FlipHTML5 URLs in the VoteContext.tsx file to point to your actual magazines
+3. Generate and add QR codes that link to your FlipHTML5 magazines
 
-```sh
-# Step 1: Clone the repository using the project's Git URL.
-git clone <YOUR_GIT_URL>
+## Created For
 
-# Step 2: Navigate to the project directory.
-cd <YOUR_PROJECT_NAME>
-
-# Step 3: Install the necessary dependencies.
-npm i
-
-# Step 4: Start the development server with auto-reloading and an instant preview.
-npm run dev
-```
-
-**Edit a file directly in GitHub**
-
-- Navigate to the desired file(s).
-- Click the "Edit" button (pencil icon) at the top right of the file view.
-- Make your changes and commit the changes.
-
-**Use GitHub Codespaces**
-
-- Navigate to the main page of your repository.
-- Click on the "Code" button (green button) near the top right.
-- Select the "Codespaces" tab.
-- Click on "New codespace" to launch a new Codespace environment.
-- Edit files directly within the Codespace and commit and push your changes once you're done.
-
-## What technologies are used for this project?
-
-This project is built with:
-
-- Vite
-- TypeScript
-- React
-- shadcn-ui
-- Tailwind CSS
-
-## How can I deploy this project?
-
-Simply open [Lovable](https://lovable.dev/projects/10ecdc00-7447-41ac-b556-024a000b47f8) and click on Share -> Publish.
-
-## Can I connect a custom domain to my Lovable project?
-
-Yes, you can!
-
-To connect a domain, navigate to Project > Settings > Domains and click Connect Domain.
-
-Read more here: [Setting up a custom domain](https://docs.lovable.dev/tips-tricks/custom-domain#step-by-step-guide)
+Math and Science Fair for Mr. Salah Alkmali's Math Classes

@@ -1,0 +1,2 @@
+
+This folder contains QR code images. Replace these placeholder images with actual QR codes that link to your FlipHTML5 magazines.
