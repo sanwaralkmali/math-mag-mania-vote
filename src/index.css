@@ -88,12 +88,6 @@
     --sidebar-border: 240 3.7% 15.9%;
     --sidebar-ring: 217.2 91.2% 59.8%;
   }
-}
-
-@layer base {
-  * {
-    @apply border-border;
-  }
 
   body {
     @apply bg-background text-foreground;
@@ -102,13 +96,18 @@
     background-repeat: no-repeat;
     background-attachment: fixed;
     background-position: center;
-    /* fallback color if image missing */
-    background-color: #222436;
+    /* Improve background overlay for better text contrast */
+    background-blend-mode: multiply;
+    background-color: rgba(34, 36, 54, 0.85); /* Slightly darker overlay */
     min-height: 100vh;
     position: relative;
     overflow-x: hidden;
-    /* Optional: for darker overlay if needed */
-    /* background-blend-mode: multiply; */
+  }
+
+  /* Enhanced text readability */
+  h1, h2, h3, p, span, div {
+    color: #E6E6F0; /* Soft light purple-gray for better contrast */
+    text-shadow: 1px 1px 2px rgba(0,0,0,0.3); /* Subtle text shadow for depth */
   }
 }
 
@@ -185,17 +184,10 @@
   border-radius: 50%;
 }
 
+/* Improve math symbol background text visibility */
 .math-symbol-bg {
-  position: fixed;
-  z-index: 1;
-  pointer-events: none;
-  font-size: 3rem;
-  font-weight: bold;
-  opacity: 0.18;
-  color: #fff;
-  user-select: none;
-  text-shadow: 0 4px 24px #6e59a5, 2px 0 4px #1A1F2C;
-  animation: bg-float 4.2s ease-in-out infinite alternate;
+  color: rgba(255,255,255,0.25); /* Slightly more transparent */
+  text-shadow: 0 4px 24px rgba(110, 89, 165, 0.5), 2px 0 4px rgba(26, 31, 44, 0.5);
 }
 @keyframes bg-float {
   0% { transform: translateY(0) rotate(-6deg);}
@@ -215,4 +207,16 @@
 #root {
   position: relative;
   z-index: 2;
+}
+
+/* Additional contrast improvements for specific elements */
+.text-gradient {
+  background: linear-gradient(to right, #D6BCFA, #9b87f5);
+  -webkit-background-clip: text;
+  color: transparent;
+}
+
+/* Ensure good contrast for interactive elements */
+.text-muted {
+  color: #8E9196; /* Neutral gray for less important text */
 }

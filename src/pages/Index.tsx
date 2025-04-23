@@ -36,10 +36,10 @@ const IndexContent = () => {
 
       <main className="flex-grow container mx-auto px-4 py-8 relative z-10">
         <div className="text-center mb-12">
-          <h2 className="text-3xl font-bold mb-3 bg-gradient-to-r from-game-purple to-game-orange bg-clip-text text-transparent">
+          <h2 className="text-3xl font-bold mb-3 text-white">
             Vote for Your Favorite Math Magazine
           </h2>
-          <p className="text-lg text-gray-100 max-w-2xl mx-auto bg-black/40 py-2 rounded-lg">
+          <p className="text-lg text-gray-300 max-w-2xl mx-auto bg-black/50 py-2 rounded-lg">
             Our talented students from Grades 11A, 11B, 12A, and 12B have created amazing math magazines.
             Browse through them and vote for your favorite!
           </p>
