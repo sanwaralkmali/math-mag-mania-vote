@@ -4,7 +4,7 @@ import { Card, CardContent, CardFooter } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
 import { Progress } from "@/components/ui/progress";
-import { Vote } from "lucide-react";
+import { Vote, RotateCcw } from "lucide-react";
 import { useVoteContext } from "@/context/VoteContext";
 
 interface MagazineCardProps {
@@ -14,13 +14,23 @@ interface MagazineCardProps {
 
 export function MagazineCard({ magazine, totalVotes }: MagazineCardProps) {
   const [isHovered, setIsHovered] = useState(false);
-  const { updateVotes, hasVoted, votedMagazineId } = useVoteContext();
+  const { updateVotes, hasVoted, votedMagazineId, resetVote } = useVoteContext();
+  
   const handleVote = () => {
-    if (!hasVoted) updateVotes(magazine.id);
+    if (hasVoted && votedMagazineId !== magazine.id) {
+      // If user has already voted for a different magazine, reset first
+      resetVote().then(() => {
+        updateVotes(magazine.id);
+      });
+    } else if (!hasVoted) {
+      updateVotes(magazine.id);
+    }
   };
+
   const openMagazine = () => {
     window.open(magazine.flipHtml5Url, "_blank", "noopener,noreferrer");
   };
+
   const votePercentage = totalVotes > 0 
     ? Math.round((magazine.votes / totalVotes) * 100) 
     : 0;
@@ -76,32 +86,43 @@ export function MagazineCard({ magazine, totalVotes }: MagazineCardProps) {
       </CardContent>
       <CardFooter className="pt-0 flex flex-col">
         {magazine.qrCodeImage && (
-          <div className="mb-2 w-full flex justify-center">
+          <div className="mb-4 w-full flex justify-center">
             <img 
               src={magazine.qrCodeImage} 
               alt={`QR Code for ${magazine.title}`} 
-              className="h-20 w-20 object-contain"
+              className="h-32 w-32 object-contain"
             />
           </div>
         )}
-        <Button 
-          onClick={handleVote}
-          disabled={hasVoted}
-          className={`vote-button w-full px-1 py-1 text-xs h-7 font-semibold ${
-            isVotedFor 
-              ? "bg-primary/80 hover:bg-primary/90" 
+        <div className="flex gap-4">
+          {isVotedFor && (
+            <Button 
+              onClick={resetVote}
+              className="w-1/2 px-1 py-1 text-xs h-7 font-semibold bg-gray-200 hover:bg-gray-300 text-gray-700"
+            >
+              <RotateCcw className="mr-1 h-3 w-3" />
+              Reset
+            </Button>
+          )}
+          <Button 
+            onClick={handleVote}
+            disabled={hasVoted && !isVotedFor}
+            className={`vote-button flex-1 px-1 py-1 text-xs h-7 font-semibold ${
+              isVotedFor 
+                ? "bg-primary/80 hover:bg-primary/90" 
+                : hasVoted 
+                  ? "bg-muted hover:bg-muted" 
+                  : "bg-game-orange hover:bg-game-orange/90"
+            }`}
+          >
+            <Vote className="mr-1 h-3 w-3" />
+            {isVotedFor 
+              ? "Thank you!" 
               : hasVoted 
-                ? "bg-muted hover:bg-muted" 
-                : "bg-game-orange hover:bg-game-orange/90"
-          }`}
-        >
-          <Vote className="mr-1 h-3 w-3" />
-          {isVotedFor 
-            ? "Thank you!" 
-            : hasVoted 
-              ? "Already Voted" 
-              : "Vote"}
-        </Button>
+                ? "Already Voted" 
+                : "Vote"}
+          </Button>
+        </div>
       </CardFooter>
     </Card>
   );

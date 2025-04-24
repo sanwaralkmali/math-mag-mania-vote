@@ -1,5 +1,3 @@
-
-import { VoteProvider } from "@/context/VoteContext";
 import { Header } from "@/components/Header";
 import { Footer } from "@/components/Footer";
 import { MagazineGrid } from "@/components/MagazineGrid";
@@ -26,10 +24,11 @@ const IndexContent = () => {
         
         <div className="relative">
           {/* Decorative math elements */}
-          <div className="absolute -top-10 -left-10 text-4xl text-game-purple-light/30 animate-float" style={{ animationDelay: '0.5s' }}>∑</div>
-          <div className="absolute top-20 -right-5 text-5xl text-game-orange/20 animate-float" style={{ animationDelay: '1.2s' }}>π</div>
-          <div className="absolute -bottom-10 -left-5 text-6xl text-game-blue/20 rotate-12 animate-float" style={{ animationDelay: '0.8s' }}>∞</div>
-          <div className="absolute bottom-40 right-10 text-5xl text-game-purple-light/30 -rotate-12 animate-float" style={{ animationDelay: '1.7s' }}>√</div>
+          <div className="absolute -top-10 -left-0 text-game-purple/50 text-4xl animate-float" style={{ animationDelay: '0.5s' }}>∑</div>
+          <div className="absolute -top-15 -right-10 text-game-blue/50 text-3xl animate-float" style={{ animationDelay: '1.2s' }}>π</div>
+          <div className="absolute -bottom-10 -left-5 text-game-orange/50 text-6xl rotate-12 animate-float" style={{ animationDelay: '0.8s' }}>∞</div>
+          <div className="absolute -bottom-40 right-10 text-5xl rotate-12 animate-float" style={{ animationDelay: '1.7s' }}>√</div>
+          <div className="absolute -top-20 left-1/4 text-game-orange/50 text-4xl animate-float" style={{ animationDelay: '2.1s' }}>∫</div>
           
           <MagazineGrid magazines={magazines} />
         </div>
