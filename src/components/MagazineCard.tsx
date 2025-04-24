@@ -98,16 +98,16 @@ export function MagazineCard({ magazine, totalVotes }: MagazineCardProps) {
           {isVotedFor && (
             <Button 
               onClick={resetVote}
-              className="w-1/2 px-1 py-1 text-xs h-7 font-semibold bg-gray-200 hover:bg-gray-300 text-gray-700"
+              className="w-50 px-1 py-1 text-s h-10 font-semibold bg-gray-200 hover:bg-gray-300 text-gray-700"
             >
-              <RotateCcw className="mr-1 h-3 w-3" />
+              <RotateCcw className="mr-1 h-4 w-4" />
               Reset
             </Button>
           )}
           <Button 
             onClick={handleVote}
             disabled={hasVoted && !isVotedFor}
-            className={`vote-button flex-1 px-1 py-1 text-xs h-7 font-semibold ${
+            className={`vote-button flex-1 px-3 py-3 text-s h-10 font-semibold ${
               isVotedFor 
                 ? "bg-primary/80 hover:bg-primary/90" 
                 : hasVoted 
@@ -115,7 +115,7 @@ export function MagazineCard({ magazine, totalVotes }: MagazineCardProps) {
                   : "bg-game-orange hover:bg-game-orange/90"
             }`}
           >
-            <Vote className="mr-1 h-3 w-3" />
+            <Vote className="mr-2 h-4 w-4" />
             {isVotedFor 
               ? "Thank you!" 
               : hasVoted 
