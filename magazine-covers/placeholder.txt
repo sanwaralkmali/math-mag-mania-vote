@@ -1,0 +1,2 @@
+
+This folder contains magazine cover images. Replace these placeholder images with actual magazine covers.
