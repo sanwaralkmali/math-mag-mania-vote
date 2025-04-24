@@ -25,7 +25,11 @@ export function Header() {
       <div className="container mx-auto py-4 px-4 flex items-center justify-between">
         <div className="flex items-center gap-2">
           <div className="h-12 w-10 rounded-lg flex items-center justify-center animate-float">
-            <img src="/assets/headerLogo.png" alt="Math Magazine Mania Logo" className="" />
+            <img 
+              src="https://sanwaralkmali.github.io/math-mag-mania-vote/assets/headerLogo.png" 
+              alt="Math Magazine Mania Logo" 
+              className="h-full w-full object-contain"
+            />
           </div>
           <div>
             <h1 className="text-xl font-bold text-gray-900 sm:text-2xl md:text-3xl">

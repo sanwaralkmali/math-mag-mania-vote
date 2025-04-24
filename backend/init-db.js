@@ -6,36 +6,36 @@ const initialMagazines = [
     id: "11a",
     title: "Grade 11A Math Magazine",
     grade: "11A",
-    coverImage: "/magazine-covers/G11A_CP.png",
+    coverImage: "https://sanwaralkmali.github.io/math-mag-mania-vote/magazine-covers/G11A_CP.png",
     flipHtml5Url: "https://online.fliphtml5.com/plyrp/ikfu/",
-    qrCodeImage: "/qr-codes/G11A_QR.png",
+    qrCodeImage: "https://sanwaralkmali.github.io/math-mag-mania-vote/qr-codes/G11A_QR.png",
     votes: 0
   },
   {
     id: "11b",
     title: "Grade 11B Math Magazine",
     grade: "11B",
-    coverImage: "/magazine-covers/G11B_CP.png",
+    coverImage: "https://sanwaralkmali.github.io/math-mag-mania-vote/magazine-covers/G11B_CP.png",
     flipHtml5Url: "https://online.fliphtml5.com/plyrp/ylzh/",
-    qrCodeImage: "/qr-codes/G11B_QR.png",
+    qrCodeImage: "https://sanwaralkmali.github.io/math-mag-mania-vote/qr-codes/G11B_QR.png",
     votes: 0
   },
   {
     id: "12a",
     title: "Grade 12A Math Magazine",
     grade: "12A",
-    coverImage: "/magazine-covers/G12A_CP.png",
+    coverImage: "https://sanwaralkmali.github.io/math-mag-mania-vote/magazine-covers/G12A_CP.png",
     flipHtml5Url: "https://online.fliphtml5.com/example/12a/",
-    qrCodeImage: "/qr-codes/G12A_QR.png",
+    qrCodeImage: "https://sanwaralkmali.github.io/math-mag-mania-vote/qr-codes/G12A_QR.png",
     votes: 0
   },
   {
     id: "12b",
     title: "Grade 12B Math Magazine",
     grade: "12B",
-    coverImage: "/magazine-covers/G12B_CP.png",
+    coverImage: "https://sanwaralkmali.github.io/math-mag-mania-vote/magazine-covers/G12B_CP.png",
     flipHtml5Url: "https://online.fliphtml5.com/plyrp/cbmq/",
-    qrCodeImage: "/qr-codes/G12B_QR.png",
+    qrCodeImage: "https://sanwaralkmali.github.io/math-mag-mania-vote/qr-codes/G12B_QR.png",
     votes: 0
   }
 ];

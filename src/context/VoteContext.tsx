@@ -2,7 +2,7 @@ import React, { createContext, useContext, useState, useEffect } from "react";
 import { Magazine } from "@/types";
 import axios from "axios";
 
-const API_URL = "http://localhost:5000/api";
+const API_URL = "https://math-mag-mania-backend.onrender.com/api";
 
 interface VoteContextProps {
   magazines: Magazine[];
