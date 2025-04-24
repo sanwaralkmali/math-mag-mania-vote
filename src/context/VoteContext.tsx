@@ -4,25 +4,25 @@ import { Magazine } from "@/types";
 const initialMagazines: Magazine[] = [
   {
     id: "11a",
-    title: "Grade 11A – Math Magazine",
+    title: "Grade 11A Math Magazine",
     grade: "11A",
     coverImage: "/images/magazines/G11A_CP.png",
-    flipHtml5Url: "https://online.fliphtml5.com/example/11a/",
+    flipHtml5Url: "https://online.fliphtml5.com/plyrp/ikfu/",
     qrCodeImage: "/images/qr_codes/G11A_QR.png",
     votes: 0
   },
   {
     id: "11b",
-    title: "Grade 11B – Math Magazine",
+    title: "Grade 11B Math Magazine",
     grade: "11B",
     coverImage: "/images/magazines/G11B_CP.png",
-    flipHtml5Url: "https://online.fliphtml5.com/example/11b/",
+    flipHtml5Url: "https://online.fliphtml5.com/plyrp/ylzh/",
     qrCodeImage: "/images/qr_codes/G11B_QR.png",
     votes: 0
   },
   {
     id: "12a",
-    title: "Grade 12A – Math Magazine",
+    title: "Grade 12A Math Magazine",
     grade: "12A",
     coverImage: "/images/magazines/G12A_CP.png",
     flipHtml5Url: "https://online.fliphtml5.com/example/12a/",
@@ -31,10 +31,10 @@ const initialMagazines: Magazine[] = [
   },
   {
     id: "12b",
-    title: "Grade 12B – Math Magazine",
+    title: "Grade 12B Math Magazine",
     grade: "12B",
     coverImage: "/images/magazines/G12B_CP.png",
-    flipHtml5Url: "https://online.fliphtml5.com/example/12b/",
+    flipHtml5Url: "https://online.fliphtml5.com/plyrp/cbmq/",
     qrCodeImage: "/images/qr_codes/G12B_QR.png",
     votes: 0
   }
