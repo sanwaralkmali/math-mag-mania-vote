@@ -1,14 +1,17 @@
-
 import { useMemo } from "react";
 import { Magazine, GradeGroup } from "@/types";
 import { MagazineCard } from "@/components/MagazineCard";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
+import { useVoteContext } from "@/context/VoteContext";
+import { Loader2 } from "lucide-react";
 
 interface MagazineGridProps {
   magazines: Magazine[];
 }
 
 export function MagazineGrid({ magazines }: MagazineGridProps) {
+  const { isLoading } = useVoteContext();
+
   // Total votes across all magazines
   const totalVotes = useMemo(() => 
     magazines.reduce((sum, magazine) => sum + magazine.votes, 0),
@@ -31,10 +34,18 @@ export function MagazineGrid({ magazines }: MagazineGridProps) {
       .map(([grade, magazines]) => ({ grade, magazines }))
       .sort((a, b) => a.grade.localeCompare(b.grade));
   }, [magazines]);
+
+  if (isLoading) {
+    return (
+      <div className="flex justify-center items-center h-64">
+        <Loader2 className="h-8 w-8 animate-spin text-game-purple" />
+      </div>
+    );
+  }
   
   return (
     <div className="w-full">
-      <Tabs defaultValue={gradeGroups[0]?.grade || "all"} className="w-full">
+      <Tabs defaultValue="all">
         <div className="flex justify-center mb-6">
           <TabsList className="bg-game-purple-light/50">
             <TabsTrigger 

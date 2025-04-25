@@ -4,7 +4,7 @@ import { Card, CardContent, CardFooter } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
 import { Progress } from "@/components/ui/progress";
-import { Vote, RotateCcw } from "lucide-react";
+import { Vote, RotateCcw, Loader2 } from "lucide-react";
 import { useVoteContext } from "@/context/VoteContext";
 
 interface MagazineCardProps {
@@ -14,6 +14,7 @@ interface MagazineCardProps {
 
 export function MagazineCard({ magazine, totalVotes }: MagazineCardProps) {
   const [isHovered, setIsHovered] = useState(false);
+  const [isImageLoading, setIsImageLoading] = useState(true);
   const { updateVotes, hasVoted, votedMagazineId, resetVote } = useVoteContext();
   
   const handleVote = () => {
@@ -51,15 +52,23 @@ export function MagazineCard({ magazine, totalVotes }: MagazineCardProps) {
         <div className={`absolute inset-0 bg-gray-100 flex items-center justify-center`}>
           <span className="text-4xl text-gray-300 font-bold">{magazine.grade}</span>
         </div>
+        {isImageLoading && (
+          <div className="absolute inset-0 flex items-center justify-center">
+            <Loader2 className="h-8 w-8 animate-spin text-game-purple" />
+          </div>
+        )}
         <img 
           src={magazine.coverImage}
           alt={magazine.title}
           className={`absolute inset-0 w-full h-full object-cover transition-all duration-500 ${
             isHovered ? "scale-110" : "scale-100"
-          }`}
+          } ${isImageLoading ? "opacity-0" : "opacity-100"}`}
+          loading="lazy"
+          onLoad={() => setIsImageLoading(false)}
           onError={(e) => {
             const target = e.target as HTMLImageElement;
             target.style.display = 'none';
+            setIsImageLoading(false);
           }}
         />
         <div className="absolute inset-0 bg-black/30 opacity-0 hover:opacity-100 transition-opacity flex items-center justify-center">
@@ -84,13 +93,14 @@ export function MagazineCard({ magazine, totalVotes }: MagazineCardProps) {
           </div>
         </div>
       </CardContent>
-      <CardFooter className="pt-0 flex flex-col">
+      <CardFooter className="flex flex-col gap-4">
         {magazine.qrCodeImage && (
           <div className="mb-4 w-full flex justify-center">
             <img 
               src={magazine.qrCodeImage} 
               alt={`QR Code for ${magazine.title}`} 
               className="h-32 w-32 object-contain"
+              loading="lazy"
             />
           </div>
         )}

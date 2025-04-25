@@ -3,6 +3,8 @@ import { Magazine } from "@/types";
 import axios from "axios";
 
 const API_URL = "https://math-mag-mania-backend.onrender.com/api";
+const CACHE_KEY = "magazines_cache";
+const CACHE_DURATION = 5 * 60 * 1000; // 5 minutes
 
 interface VoteContextProps {
   magazines: Magazine[];
@@ -14,12 +16,14 @@ interface VoteContextProps {
   thankYouVisible: boolean;
   setThankYouVisible: (visible: boolean) => void;
   resetVote: () => Promise<void>;
+  isLoading: boolean;
 }
 
 const VoteContext = createContext<VoteContextProps | undefined>(undefined);
 
 export const VoteProvider: React.FC<{ children: React.ReactNode }> = ({ children }) => {
   const [magazines, setMagazines] = useState<Magazine[]>([]);
+  const [isLoading, setIsLoading] = useState<boolean>(true);
   const [hasVoted, setHasVoted] = useState<boolean>(() => {
     return localStorage.getItem("hasVoted") === "true";
   });
@@ -31,10 +35,29 @@ export const VoteProvider: React.FC<{ children: React.ReactNode }> = ({ children
   useEffect(() => {
     const fetchMagazines = async () => {
       try {
+        // Check cache first
+        const cachedData = localStorage.getItem(CACHE_KEY);
+        if (cachedData) {
+          const { data, timestamp } = JSON.parse(cachedData);
+          if (Date.now() - timestamp < CACHE_DURATION) {
+            setMagazines(data);
+            setIsLoading(false);
+            return;
+          }
+        }
+
         const response = await axios.get(`${API_URL}/magazines`);
         setMagazines(response.data);
+        
+        // Update cache
+        localStorage.setItem(CACHE_KEY, JSON.stringify({
+          data: response.data,
+          timestamp: Date.now()
+        }));
       } catch (error) {
         console.error("Error fetching magazines:", error);
+      } finally {
+        setIsLoading(false);
       }
     };
     fetchMagazines();
@@ -96,7 +119,8 @@ export const VoteProvider: React.FC<{ children: React.ReactNode }> = ({ children
       setVotedMagazineId,
       thankYouVisible,
       setThankYouVisible,
-      resetVote
+      resetVote,
+      isLoading
     }}>
       {children}
     </VoteContext.Provider>
