@@ -25,7 +25,7 @@ const initialMagazines = [
     title: "Grade 12A Math Magazine",
     grade: "12A",
     coverImage: "https://sanwaralkmali.github.io/math-mag-mania-vote/magazine-covers/G12A_CP.png",
-    flipHtml5Url: "https://online.fliphtml5.com/example/12a/",
+    flipHtml5Url: "https://online.fliphtml5.com/plyrp/ulbp/",
     qrCodeImage: "https://sanwaralkmali.github.io/math-mag-mania-vote/qr-codes/G12A_QR.png",
     votes: 0
   },
